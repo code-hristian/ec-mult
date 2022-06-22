@@ -300,10 +300,11 @@ testLoop()
 
 
 def compare():
-    klist = list(range(0, (700+1)))
+    klist = list(range(0, (100+1)))
     data1 = []
     data2 = []
     data3 = []
+    data4 = []
     for i in klist:
         r1, c1 = mult(i, (0, 3), 5, 2)
         data1.append(c1)
@@ -311,10 +312,13 @@ def compare():
         data2.append(c2)
         r3, c3 = scalar_mult_bin_naf_book(i, (0, 3), 5, 2)
         data3.append(c3)
+        r4, c4 = scalar_mult_radix4_2(i, (0, 3), 5, 2)
+        data4.append(c4)
 
     plt.plot(klist, data1, label="naive mult")
     plt.plot(klist, data2, label="binary")
-    plt.plot(klist, data3, label="m-ary")
+    plt.plot(klist, data2, label="naf")
+    plt.plot(klist, data4, label="m-ary")
     plt.title("count of add scaling k")
     plt.xlabel('k')
     plt.ylabel('number of operations')
